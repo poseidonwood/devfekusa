@@ -67,7 +67,7 @@ require './connect.php';
                             <img src="./assets/img/admin-avatar.png" width="45px" />
                         </div>
                         <div class="admin-info">
-                            <div class="font-strong"><?php echo $_SESSION['user']; ?></div><small>Administrator</small></div>
+                            <div class="font-strong"><?php echo $_SESSION['nama_lengkap']; ?></div><small><?=$_SESSION['role_name'];?></small></div>
                     </div>
                     <?php
                     if ($_SESSION['role'] == "1") {
@@ -363,7 +363,6 @@ require './connect.php';
                         $('button#btn-dropdown').attr('disabled', false);
                     }
                 });
-
                 $("#pilihHasilBeranda").change(function () {
                     var value = $(this).val();
                     $("#valueHasilBeranda").hide("slow");

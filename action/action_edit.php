@@ -39,7 +39,7 @@ switch ($op) {
         $nik = @$_POST['nik'];
         $role = @$_POST['role'];
         $nama_lengkap = @$_POST['nama_lengkap'];
-        $password = @$_POST['password'];
+        $password = sha1(@$_POST['password']);
         if (!empty($bagian) && !empty($username) && !empty($nik) && !empty($nama_lengkap) && !empty($password) && !empty($role)) {
             $query = "UPDATE user SET username='$username' , nama_lengkap='$nama_lengkap' , nik='$nik' , password='$password' , id_bagian='$bagian' , role='$role'  WHERE id_admin='$id'";
             $crud->update($query, $konek, './?page=user');
@@ -57,14 +57,14 @@ switch ($op) {
         $password = @$_POST['password'];
         if (!empty($username) && !empty($nama_lengkap) && !empty($nik) && !empty($password)) {
             $query = "UPDATE user SET username='$username' , nama_lengkap='$nama_lengkap' , nik='$nik' , password='$password'  WHERE id_admin='$id'";
-            $crud->update($query, $konek, './logout.php');
+            $crud->update($query, $konek, './index.php');
         } else {
             $result = 'failed' . $konek->error;
             echo json_encode($result);
             $konek->close();
         }
         break;
-		
+
     case 'pegawai':
         $bagian = @$_POST['bagian'];
         $tempat = @$_POST['tempat'];

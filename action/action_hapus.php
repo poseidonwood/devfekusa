@@ -25,6 +25,8 @@ switch ($op){
         break;
     case 'kriteria':
         $query="DELETE FROM kriteria WHERE id_kriteria='$id'";
+        $query_bobot = "DELETE FROM bobot_kriteria where id_kriteria='$id'";
+        $konek->query($query_bobot);
         $crud->delete($query,$konek);
         break;
     case 'sub_kriteria':
@@ -34,6 +36,12 @@ switch ($op){
     case 'bobot':
         $query="DELETE FROM bobot_kriteria WHERE id_bagian='$id'";
         $crud->delete($query,$konek);
+        break;
+    case'bobot_kriteria':
+        $query="DELETE FROM bobot_kriteria WHERE id_bobotkriteria='$id'";
+        $konek->query($query);
+        echo "<script>window.history.back();
+location.reload(); </script>";
         break;
     case 'nilai':
         $query="DELETE FROM nilai_pegawai WHERE id_pegawai='$id'";
